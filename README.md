@@ -32,12 +32,12 @@ Um clone do Instagram criado com HTML, CSS e JavaScript puro, apresentando uma i
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/seu-usuario/siteInstagramModify.git
+git clone https://github.com/wesleyyach/InstagramModify.git
 ```
 
 2. Navegue até o diretório do projeto:
 ```bash
-cd siteInstagramModify
+cd InstagramModify
 ```
 
 3. Abra o arquivo `index.html` em seu navegador
@@ -53,7 +53,7 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 ## 👨‍💻 Autor
 
 - **Wesley de Albuquerque Filgueiras**
-  - GitHub: [@seu-usuario](https://github.com/seu-usuario)
+  - GitHub: [@wesleyyach](https://github.com/wesleyyach)
 
 ## 🙏 Agradecimentos
 
