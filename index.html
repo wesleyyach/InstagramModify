@@ -3,54 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instagram Clone - Wesley de Albuquerque Filgueiras</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <meta name="description" content="Clone do Instagram criado por Wesley de Albuquerque Filgueiras">
+    <meta name="author" content="Wesley de Albuquerque Filgueiras">
+    <title>Instagram Clone</title>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://static.cdninstagram.com/rsrc.php/v3/y-/r/yXM3FgMdVNX.css">
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="js/background-effects.js" defer></script>
+    <script src="js/effects.js" defer></script>
+    <script src="js/main.js" defer></script>
 </head>
 <body>
+    <!-- Canvas para efeitos de fundo -->
+    <canvas id="bg-canvas"></canvas>
+    <div class="background"></div>
+    
+    <!-- Controles de Efeitos -->
+    <div class="effect-controls">
+        <div class="effect-buttons">
+            <!-- Efeito 1: Partículas -->
+            <div class="effect-item">
+                <label class="switch">
+                    <input type="checkbox" id="effect1">
+                    <span class="slider"></span>
+                </label>
+                <button onclick="changeBackgroundEffect(1)" class="effect-btn">Partículas</button>
+            </div>
+
+            <!-- Efeito 2: Ondas -->
+            <div class="effect-item">
+                <label class="switch">
+                    <input type="checkbox" id="effect2">
+                    <span class="slider"></span>
+                </label>
+                <button onclick="changeBackgroundEffect(2)" class="effect-btn">Ondas</button>
+            </div>
+
+            <!-- Efeito 3: Círculos -->
+            <div class="effect-item">
+                <label class="switch">
+                    <input type="checkbox" id="effect3">
+                    <span class="slider"></span>
+                </label>
+                <button onclick="changeBackgroundEffect(3)" class="effect-btn">Círculos</button>
+            </div>
+
+            <!-- Efeito 4: Linhas -->
+            <div class="effect-item">
+                <label class="switch">
+                    <input type="checkbox" id="effect4">
+                    <span class="slider"></span>
+                </label>
+                <button onclick="changeBackgroundEffect(4)" class="effect-btn">Linhas</button>
+            </div>
+
+            <!-- Efeito 5: Estrelas -->
+            <div class="effect-item">
+                <label class="switch">
+                    <input type="checkbox" id="effect5">
+                    <span class="slider"></span>
+                </label>
+                <button onclick="changeBackgroundEffect(5)" class="effect-btn">Estrelas</button>
+            </div>
+
+            <!-- Efeito 6: Matrix -->
+            <div class="effect-item">
+                <label class="switch">
+                    <input type="checkbox" id="effect6">
+                    <span class="slider"></span>
+                </label>
+                <button onclick="changeBackgroundEffect(6)" class="effect-btn">Matrix</button>
+            </div>
+
+            <!-- Efeito 7: Vaga-lumes -->
+            <div class="effect-item">
+                <label class="switch">
+                    <input type="checkbox" id="effect7">
+                    <span class="slider"></span>
+                </label>
+                <button onclick="changeBackgroundEffect(7)" class="effect-btn">Vaga-lumes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Barra de Navegação -->
     <nav class="navbar">
         <div class="nav-wrapper">
             <div class="logo">
                 <h1>Instagram Clone</h1>
             </div>
             <div class="nav-items">
-                <a href="#"><i class="fas fa-home"></i></a>
-                <a href="#"><i class="fas fa-search"></i></a>
-                <a href="#"><i class="fas fa-compass"></i></a>
-                <a href="#"><i class="fas fa-heart"></i></a>
-                <a href="#" class="profile-link">
-                    <img src="https://github.com/wesleyalbuquerque.png" alt="Profile" class="profile-pic">
+                <a href="#" aria-label="Home"><i class="fas fa-home"></i></a>
+                <a href="#" aria-label="Pesquisar"><i class="fas fa-search"></i></a>
+                <a href="#" aria-label="Explorar"><i class="fas fa-compass"></i></a>
+                <a href="#" aria-label="Notificações"><i class="fas fa-heart"></i></a>
+                <a href="#" class="profile-link" aria-label="Perfil">
+                    <img src="img/Profile.png" alt="Foto de Perfil" class="profile-pic">
                 </a>
             </div>
         </div>
     </nav>
 
+    <!-- Conteúdo Principal -->
     <main class="main-container">
+        <!-- Feed de Posts -->
         <div class="feed">
             <!-- Post 1 -->
-            <article class="post">
+            <article class="post" data-post-id="1">
                 <header class="post-header">
                     <div class="user-info">
-                        <img src="https://github.com/wesleyalbuquerque.png" alt="Profile Picture" class="profile-pic">
+                        <img src="img/Profile.png" alt="Foto de Perfil" class="profile-pic">
                         <a href="#" class="username">Wesley</a>
                     </div>
-                    <button class="more-options">
+                    <button class="more-options" aria-label="Mais opções">
                         <i class="fas fa-ellipsis-h"></i>
                     </button>
                 </header>
                 <div class="post-image">
-                    <img src="img/NactePreview.png" alt="Post Image">
+                    <img src="img/NactePreview.png" alt="Preview do site Nactel Construções">
                 </div>
                 <div class="post-actions">
                     <div class="left-actions">
-                        <button><i class="far fa-heart"></i></button>
-                        <button><i class="far fa-comment"></i></button>
-                        <button><i class="far fa-paper-plane"></i></button>
+                        <button class="like-button" aria-label="Curtir">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <button aria-label="Comentar"><i class="far fa-comment"></i></button>
+                        <button aria-label="Compartilhar"><i class="far fa-paper-plane"></i></button>
                     </div>
-                    <button><i class="far fa-bookmark"></i></button>
+                    <button aria-label="Salvar"><i class="far fa-bookmark"></i></button>
                 </div>
                 <div class="post-likes">
-                    <p>1.234 curtidas</p>
+                    <p>1234</p>
                 </div>
                 <div class="post-caption">
                     <p><a href="#" class="username">Wesley</a> Meu projeto para empresa Nactel Construções #desenvolvimento #portfolio #webdev</p>
@@ -64,32 +153,34 @@
             </article>
 
             <!-- Post 2 -->
-            <article class="post">
+            <article class="post" data-post-id="2">
                 <header class="post-header">
                     <div class="user-info">
-                        <img src="https://github.com/wesleyalbuquerque.png" alt="Profile Picture" class="profile-pic">
+                        <img src="img/Profile.png" alt="Foto de Perfil" class="profile-pic">
                         <a href="#" class="username">Wesley</a>
                     </div>
-                    <button class="more-options">
+                    <button class="more-options" aria-label="Mais opções">
                         <i class="fas fa-ellipsis-h"></i>
                     </button>
                 </header>
                 <div class="post-image">
-                    <img src="https://via.placeholder.com/614x614" alt="Post Image">
+                    <img src="img/siteCalc.png" alt="Preview do site Calculadora">
                 </div>
                 <div class="post-actions">
                     <div class="left-actions">
-                        <button><i class="far fa-heart"></i></button>
-                        <button><i class="far fa-comment"></i></button>
-                        <button><i class="far fa-paper-plane"></i></button>
+                        <button class="like-button" aria-label="Curtir">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <button aria-label="Comentar"><i class="far fa-comment"></i></button>
+                        <button aria-label="Compartilhar"><i class="far fa-paper-plane"></i></button>
                     </div>
-                    <button><i class="far fa-bookmark"></i></button>
+                    <button aria-label="Salvar"><i class="far fa-bookmark"></i></button>
                 </div>
                 <div class="post-likes">
-                    <p>856 curtidas</p>
+                    <p>856</p>
                 </div>
                 <div class="post-caption">
-                    <p><a href="#" class="username">Wesley</a> Aprendendo novas tecnologias para desenvolvimento web! #programacao #javascript #html #css</p>
+                    <p><a href="#" class="username">Wesley</a> Site feito por mim para conhecimento #programacao #javascript #html #css</p>
                 </div>
                 <div class="post-comments">
                     <p>Ver todos os 45 comentários</p>
@@ -100,30 +191,34 @@
             </article>
 
             <!-- Post 3 -->
-            <div class="post">
-                <div class="post-header">
+            <article class="post" data-post-id="3">
+                <header class="post-header">
                     <div class="user-info">
-                        <img src="https://via.placeholder.com/40" alt="Profile Picture" class="profile-pic">
-                        <span class="username">Wesley</span>
+                        <img src="img/Profile.png" alt="Foto de Perfil" class="profile-pic">
+                        <a href="#" class="username">Wesley</a>
                     </div>
-                    <i class="fas fa-ellipsis-h"></i>
-                </div>
+                    <button class="more-options" aria-label="Mais opções">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                </header>
                 <div class="post-image">
-                    <img src="https://via.placeholder.com/600" alt="Post Image">
+                    <img src="img/siteTemperoNordeste.png" alt="Preview do site Tempero Nordeste">
                 </div>
                 <div class="post-actions">
                     <div class="left-actions">
-                        <i class="far fa-heart"></i>
-                        <i class="far fa-comment"></i>
-                        <i class="far fa-paper-plane"></i>
+                        <button class="like-button" aria-label="Curtir">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <button aria-label="Comentar"><i class="far fa-comment"></i></button>
+                        <button aria-label="Compartilhar"><i class="far fa-paper-plane"></i></button>
                     </div>
-                    <i class="far fa-bookmark"></i>
+                    <button aria-label="Salvar"><i class="far fa-bookmark"></i></button>
                 </div>
                 <div class="post-likes">
-                    <p>2,345 curtidas</p>
+                    <p>2345</p>
                 </div>
                 <div class="post-caption">
-                    <p><span class="username">Wesley</span> Compartilhando meu progresso no desenvolvimento! #desenvolvimento #frontend #portfolio</p>
+                    <p><a href="#" class="username">Wesley</a> Site feito por mim e minha dupla, projeto de faculdade #desenvolvimento #frontend #portfolio</p>
                 </div>
                 <div class="post-comments">
                     <p>Ver todos os 89 comentários</p>
@@ -131,41 +226,88 @@
                 <div class="post-time">
                     <p>HÁ 1 DIA</p>
                 </div>
-            </div>
+            </article>
+
+            <!-- Post 4 -->
+            <article class="post" data-post-id="4">
+                <header class="post-header">
+                    <div class="user-info">
+                        <img src="img/Profile.png" alt="Foto de Perfil" class="profile-pic">
+                        <a href="#" class="username">Wesley</a>
+                    </div>
+                    <button class="more-options" aria-label="Mais opções">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                </header>
+                <div class="post-image">
+                    <img src="img/siteMy.png" alt="Preview do meu site pessoal">
+                </div>
+                <div class="post-actions">
+                    <div class="left-actions">
+                        <button class="like-button" aria-label="Curtir">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <button aria-label="Comentar"><i class="far fa-comment"></i></button>
+                        <button aria-label="Compartilhar"><i class="far fa-paper-plane"></i></button>
+                    </div>
+                    <button aria-label="Salvar"><i class="far fa-bookmark"></i></button>
+                </div>
+                <div class="post-likes">
+                    <p>1876</p>
+                </div>
+                <div class="post-caption">
+                    <p><a href="#" class="username">Wesley</a> Meu primeiro site de Portfólio criado por mim #portfolio #primeiroprojeto #desenvolvimento</p>
+                </div>
+                <div class="post-comments">
+                    <p>Ver todos os 67 comentários</p>
+                </div>
+                <div class="post-time">
+                    <p>HÁ 3 DIAS</p>
+                </div>
+            </article>
         </div>
 
+        <!-- Barra Lateral -->
         <aside class="sidebar">
+            <!-- Perfil do Usuário -->
             <div class="user-profile">
-                <img src="https://github.com/wesleyalbuquerque.png" alt="Your Profile" class="profile-pic">
+                <img src="img/Profile.png" alt="Sua foto de perfil" class="profile-pic">
                 <div class="user-info">
                     <h3>Wesley</h3>
                     <p>Wesley de Albuquerque Filgueiras</p>
                 </div>
             </div>
             
+            <!-- Sugestões -->
             <div class="suggestions">
                 <div class="suggestions-header">
                     <h3>Sugestões para você</h3>
                     <a href="#">Ver tudo</a>
                 </div>
+
+                <!-- Sugestão 1 -->
                 <div class="suggestion-item">
-                    <img src="https://github.com/github.png" alt="GitHub" class="profile-pic">
+                    <img src="https://github.com/github.png" alt="Logo do GitHub" class="profile-pic">
                     <div class="suggestion-info">
                         <h4>github</h4>
                         <p>Seguido por 1M+</p>
                     </div>
                     <a href="#">Seguir</a>
                 </div>
+
+                <!-- Sugestão 2 -->
                 <div class="suggestion-item">
-                    <img src="https://www.gravatar.com/avatar/3" alt="Stack Overflow" class="profile-pic">
+                    <img src="https://www.gravatar.com/avatar/3" alt="Logo do Stack Overflow" class="profile-pic">
                     <div class="suggestion-info">
                         <h4>stackoverflow</h4>
                         <p>Seguido por 500K+</p>
                     </div>
                     <a href="#">Seguir</a>
                 </div>
+
+                <!-- Sugestão 3 -->
                 <div class="suggestion-item">
-                    <img src="https://www.gravatar.com/avatar/4" alt="Dev.to" class="profile-pic">
+                    <img src="https://www.gravatar.com/avatar/4" alt="Logo do Dev.to" class="profile-pic">
                     <div class="suggestion-info">
                         <h4>dev.to</h4>
                         <p>Seguido por 200K+</p>
@@ -175,5 +317,16 @@
             </div>
         </aside>
     </main>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Wesley de Albuquerque Filgueiras. Todos os direitos reservados.</p>
+            <div class="footer-links">
+                <a href="LICENSE" target="_blank">Licença</a>
+                <a href="https://github.com/seu-usuario/siteInstagramModify" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
